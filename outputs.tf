@@ -12,7 +12,7 @@ output "elastictranscoder_pipelines_aws_kms_key_arn" {
 }
 output "elastictranscoder_pipelines_content_config" {
   description = "Map of content_config values across all elastictranscoder_pipelines, keyed the same as var.elastictranscoder_pipelines"
-  value       = { for k, v in aws_elastictranscoder_pipeline.elastictranscoder_pipelines : k => v.content_config if v.content_config != null && length(v.content_config) > 0 }
+  value       = { for k, v in aws_elastictranscoder_pipeline.elastictranscoder_pipelines : k => one(v.content_config) if v.content_config != null && length(v.content_config) > 0 }
 }
 output "elastictranscoder_pipelines_content_config_permissions" {
   description = "Map of content_config_permissions values across all elastictranscoder_pipelines, keyed the same as var.elastictranscoder_pipelines"
@@ -28,7 +28,7 @@ output "elastictranscoder_pipelines_name" {
 }
 output "elastictranscoder_pipelines_notifications" {
   description = "Map of notifications values across all elastictranscoder_pipelines, keyed the same as var.elastictranscoder_pipelines"
-  value       = { for k, v in aws_elastictranscoder_pipeline.elastictranscoder_pipelines : k => v.notifications if v.notifications != null && length(v.notifications) > 0 }
+  value       = { for k, v in aws_elastictranscoder_pipeline.elastictranscoder_pipelines : k => one(v.notifications) if v.notifications != null && length(v.notifications) > 0 }
 }
 output "elastictranscoder_pipelines_output_bucket" {
   description = "Map of output_bucket values across all elastictranscoder_pipelines, keyed the same as var.elastictranscoder_pipelines"
@@ -44,7 +44,7 @@ output "elastictranscoder_pipelines_role" {
 }
 output "elastictranscoder_pipelines_thumbnail_config" {
   description = "Map of thumbnail_config values across all elastictranscoder_pipelines, keyed the same as var.elastictranscoder_pipelines"
-  value       = { for k, v in aws_elastictranscoder_pipeline.elastictranscoder_pipelines : k => v.thumbnail_config if v.thumbnail_config != null && length(v.thumbnail_config) > 0 }
+  value       = { for k, v in aws_elastictranscoder_pipeline.elastictranscoder_pipelines : k => one(v.thumbnail_config) if v.thumbnail_config != null && length(v.thumbnail_config) > 0 }
 }
 output "elastictranscoder_pipelines_thumbnail_config_permissions" {
   description = "Map of thumbnail_config_permissions values across all elastictranscoder_pipelines, keyed the same as var.elastictranscoder_pipelines"
